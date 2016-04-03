@@ -1,7 +1,10 @@
 package repairer;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
+
+import org.apache.commons.io.filefilter.FileFilterUtils;
 
 public class FileExtractor {
 	
@@ -17,8 +20,23 @@ public class FileExtractor {
 	}
 
 	public List<File> extract() {
-		//TODO
-		return null;
+		List<File> list = new LinkedList<File>();
+		extract(path,list);
+		return list;
+	}
+	
+	private void extract(File currentFile, List<File> files) {
+		if (currentFile != null) {
+			if (currentFile.isFile()) {
+				if (currentFile.toString().endsWith(extension)) {
+					files.add(currentFile);
+				}
+			} else {
+				for (File f : currentFile.listFiles()) {
+					extract(f,files);
+				}
+			}
+		}
 	}
 	
 	public static List<File> extract(File path, String extension) {

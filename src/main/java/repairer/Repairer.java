@@ -1,19 +1,19 @@
 package repairer;
 
-import java.util.Iterator;
 import java.util.List;
 
+import spoon.processing.AbstractProcessor;
+
 public class Repairer {
-	private List<String> operatorNames;
-	private Iterator<String> currentOperator;
-	private String path;
+	private List<AbstractProcessor<?>> operators;
+	private String root;
 	
-	private CompilerExecutor compiler;
-	private FileExtractor extractor;
-	
-	private int totalStartFailures;
+	public Repairer(List<AbstractProcessor<?>> operators, String root) {
+		this.operators = operators;
+		this.root = root;
+	}
 	
 	public void repair() {
-		//TODO
+		
 	}
 }

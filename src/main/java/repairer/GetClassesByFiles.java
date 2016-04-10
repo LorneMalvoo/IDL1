@@ -72,10 +72,4 @@ public class GetClassesByFiles {
 	public static List<Class<?>> convert(List<File> files) {
 		return new GetClassesByFiles(files).convert();
 	}
-	public static void main(String args[]) {
-		List<File> files = new FileExtractor("C:\\Users\\Étienne\\Documents\\workspace\\toto",".class").extract();
-		List<Class<?>> list = new GetClassesByFiles(files).convert();
-		TestExecutor test = new TestExecutor(list);
-		test.runTests();
-	}
 }
